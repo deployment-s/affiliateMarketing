@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load tailwind_filters %}
+
+{% block title %}
+My Account edit
+{% endblock title %}
+
+
+
+{% block css %}
+
+{% endblock css %}
+
+{% block content %}
+<form method="post" action="." class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+    {% csrf_token %}
+    {% if error_message %}
+    <div class="error-message text-center text-red-500 font-bold">
+        {{ error_message }}
+    </div>
+    {% endif %}
+
+
+
+    <div class="mt-8">
+        <label for="first_name">first_name</label>
+        <input class="border border-gray-300 p-3 rounded w-full text-base leading-4 placeholder-gray-600 text-gray-600"
+            type="text" name="first_name" value="{{ user.first_name}}" />
+    </div>
+    <div class="mt-8">
+        <label for="last_name">Last_name</label>
+        <input class="border border-gray-300 p-3 rounded w-full text-base leading-4 placeholder-gray-600 text-gray-600"
+            type="text" name="last_name" value="{{user.last_name}}" />
+    </div>
+    <div class="mt-8">
+        <label for="username">Username</label>
+        <input class="border border-gray-300 p-3 rounded w-full text-base leading-4 placeholder-gray-600 text-gray-600"
+            type="text" name="username" value="{{user.username}}" />
+    </div>
+    <div class="mt-8">
+        <label for="email">Email</label>
+        <input class="border border-gray-300 p-3 rounded w-full text-base leading-4 placeholder-gray-600 text-gray-600"
+            type="email" name="email" value="{{user.email}}" />
+    </div>
+
+    <div>
+        <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-lg mt-4 w-full">Submit</button>
+    </div>
+</form>
+{% endblock content %}
+
+
+
+
+{% block js %}
+
+{% endblock js %}

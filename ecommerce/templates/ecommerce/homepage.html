@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+Home page
+{% endblock title %}
+
+
+
+{% block css %}
+
+{% endblock css %}
+
+{% block content %}
+<div
+    class="min-h-[500px] flex flex-col justify-center items-center bg-gradient-to-r from-indigo-800 via-transparent to-cyan-500 py-4 bg-opacity-5">
+
+    {% if request.user.is_authenticated %}
+    <div class="text-2xl">
+        Hi <span class="text-2xl font-semibold">{{request.user.username }}!</span>
+    </div>
+    {% endif %}
+    <h2 class="text-PRIMARY1 md:text-4xl text-2xl">Welcome to Tech Shop </h2>
+
+
+
+
+
+    <div class="max-w-[500px] w-full bg-no-repeat flex flex-col justify-center items-center">
+        <img src="{% static '/images/bag.png' %}" alt="shopping cart">
+        <a href="{% url 'ecommerce:shop' %}">
+            <button
+                class=" bg-red-400 hover:bg-red-500 text-white font-bold py-3 px-6 rounded-full  hover:text-white shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]  hover:scale-110 hover:brightness-110 animate-bounce hover:animate-none z-0 ">
+                Start Shopping
+            </button>
+        </a>
+
+    </div>
+
+
+</div>
+
+
+<div class="flex flex-wrap justify-center items-center pt-5 px-4 gap-4">
+    {% include 'ecommerce/homeProducts.html' %}
+</div>
+{% endblock content %}
+
+
+
+
+{% block js %}
+
+{% endblock js %}

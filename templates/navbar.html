@@ -1,0 +1,151 @@
+<header class="text-gray-700 body-font ">
+    <nav class=" fixed top-0 left-0 right-0 border-b-2 bg-[#bce1ff] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] z-50 ">
+        <div class="max-w-screen-2xl  mx-auto px-4  ">
+            <div class="flex justify-between">
+
+                <div class="flex space-x-4">
+                    <!-- logo -->
+                    <div>
+                        <a href="/" class="flex items-center gap-2 py-5 text-gray-700 hover:text-gray-900">
+                            <svg class="h-6 w-6 flex-shrink-0 text-gray-900 group-hover:text-gray-500" fill="none"
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                            </svg>
+                            <span class="font-bold">Ecommerce</span>
+                        </a>
+                    </div>
+
+                </div>
+
+
+                <!-- primary nav -->
+                <div class="hidden md:flex items-center space-x-1 font-bold">
+                    {% if request.user.is_authenticated %}
+                    <a href="{% url 'ecommerce:shop' %}"
+                        class="block w-full py-2 px-4 rounded-xl text-sm hover:bg-gray-200">Shop</a>
+                    {% endif %}
+                    <a href=" {% url 'ecommerce:AboutUsPage' %}  "
+                        class="block w-full py-2 px-4 text-sm hover:bg-gray-200 rounded-xl">About</a>
+                    <a href=" {% url 'ecommerce:contactUs' %} "
+                        class="block w-full py-2 px-4 text-sm hover:bg-gray-200 rounded-xl">Contact</a>
+
+
+                </div>
+
+                <div class="flex gap-4 items-center justify-center">
+
+
+                    <!-- /////////////////////// -->
+                    <div hx-get="{%url 'cart:hx_menu_cart' %}" hx-trigger="update-menu-cart from:body"
+                        hx-swap="innerHTML">
+
+                        {% include 'cart/cart_menu_partial.html' %}
+                    </div>
+
+                    <!-- /////////////////////// -->
+
+                    <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" type="button">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 " fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </button>
+
+                    <!-- Dropdown menu -->
+                    <div id="dropdown"
+                        class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                            aria-labelledby="dropdownDefaultButton">
+                            {% if not request.user.is_authenticated %}
+                            <li>
+                                <a href=" {% url 'ecommerce:signUp' %} " class="block px-4 py-2">SignUp</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'login' %}"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Login</a>
+                            </li>
+                            {% endif %}
+
+                            {% if request.user.is_authenticated %}
+
+                            <li>
+                                <a href=" {% url 'ecommerce:my_Account' %} "
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">My
+                                    Account</a>
+                            </li>
+                            <!-- <li>
+                                <a href="#"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Favorates</a>
+                            </li> -->
+                            <li>
+                                <div
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <form method="post" action="{% url 'logout' %}">
+                                        {% csrf_token %}
+
+                                        <button class=" font-bold w-full text-start" type="submit">Logout</button>
+                                    </form>
+                                </div>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+
+
+
+
+                    <!-- mobile button goes here -->
+                    <div class="md:hidden flex items-center">
+                        <button class="mobile-menu-button">
+                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- mobile menu -->
+        <div class="mobile-menu hidden md:hidden bg-animated-bg ">
+            <div class="flex justify-center items-center flex-col p-4 text-center gap-2">
+                <div class="w-full flex flex-col justify-center items-center gap-2">
+                    {% if request.user.is_authenticated %}
+
+                    <a href="{% url 'ecommerce:shop' %}" class="block w-full  text-sm ">
+                        <div
+                            class="flex   bg-slate-300 p-3 cursor-pointer rounded-xl justify-start items-center hover:text-SECONDARY1 hover:bg-slate-500 font-bold">
+                            shop
+
+                        </div>
+                    </a>
+                    {% endif %}
+
+                    <a href="{% url 'ecommerce:AboutUsPage' %}" class="block w-full  text-sm ">
+                        <div
+                            class="flex   bg-slate-300 p-3 cursor-pointer rounded-xl justify-start items-center hover:text-SECONDARY1 hover:bg-slate-500 font-bold">
+                            About
+
+                        </div>
+                    </a>
+
+
+
+                    </a>
+                    <a href="{% url 'ecommerce:contactUs' %}" class="block w-full  text-sm ">
+                        <div
+                            class="flex   bg-slate-300 p-3 cursor-pointer rounded-xl justify-start items-center hover:text-SECONDARY1 hover:bg-slate-500 font-bold">
+                            Contact
+
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+    </nav>
+</header>

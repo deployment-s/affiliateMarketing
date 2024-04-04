@@ -1,0 +1,54 @@
+{% for product in products %}
+<div class="w-60 h-80 bg-gray-50 p-3 flex flex-col gap-1 rounded-2xl">
+    <div class="h-48 bg-gray-700 rounded-xl">
+        <a href="{% url 'products:product' product.pk product.slug %}">
+            <img class="w-full min-w-[200px] h-[200px] object-fit rounded-t-lg" src="{{ product.get_thumbnail }}"
+                alt="product image">
+        </a>
+    </div>
+    <div class="flex flex-col gap-4">
+        <div class="flex flex-row justify-between">
+            <div class="flex flex-col">
+                <a href="{% url 'products:product' product.pk product.slug %}">
+                    <span class="text-xl font-bold">{{product.name}}</span>
+                </a>
+                <p class="text-xs text-gray-700">ID: {{product.id}}</p>
+            </div>
+            <span class="font-bold  text-red-600">Ksh: {{product.get_display_price}}</span>
+        </div>
+        {% include 'add_to_cart_btn.html' %}
+    </div>
+</div>
+
+{% endfor %}
+
+<!-- {% for product in products %}
+<div class="max-w-[300px] mr-6 mb-5 mx-auto">
+
+
+    <div class="bg-white shadow-md rounded-lg dark:bg-gray-800 min-w-[250px] dark:border-gray-700">
+        <div class="">
+            <a href="{% url 'products:product' product.pk product.slug %}">
+                <img class="w-full min-w-[200px] h-[200px] object-fit rounded-t-lg" src="{{ product.get_thumbnail }}"
+                    alt="product image">
+            </a>
+        </div>
+        <div class="px-5 pb-5">
+            <a href="{% url 'products:product' product.pk product.slug %}">
+                <h3 class="text-gray-900 font-semibold text-xl mb-3 tracking-tight dark:text-white">{{product.name}}
+                </h3>
+            </a>
+
+            <div class="flex items-center mb-5 justify-between">
+                <span class="text-xl font-bold text-gray-900 dark:text-white">Ksh: {{product.get_display_price}}</span>
+                <span class="text-white font-bold ">
+                    ID: {{product.id}}
+                </span>
+            </div>
+            <div class="w-full flex justify-center items-center">
+                {% include 'add_to_cart_btn.html' %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %} -->

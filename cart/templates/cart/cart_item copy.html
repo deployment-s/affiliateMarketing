@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+cart Page
+{% endblock title %}
+
+
+
+{% block css %}
+
+{% endblock css %}
+
+{% block content %}
+<div class=" w-full">
+    <div class=" w-full  mx-auto px-4">
+        <h1 class="text-2xl font-semibold mb-4">Shopping Cart</h1>
+        <div class="flex flex-col md:flex-row gap-4 w-full ">
+            <div class="md:w-3/5">
+
+                {% for item in cart %}
+                <div id="cart-item-{{ item.product.id }}" class="bg-white rounded-lg shadow-md p-6 mb-4">
+                    <table class="w-full">
+                        <thead>
+                            <tr>
+                                <th class="text-left font-semibold">Product</th>
+                                <th class="text-left font-semibold">Price</th>
+                                <th class="text-left font-semibold">Quantity</th>
+                                <th class="text-left font-semibold">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="py-4">
+                                    <div class="flex flex-col gap-3 justify-center items-center">
+                                        <img class="h-16 w-16 mr-4" src=" {{ item.product.get_thumbnail }} "
+                                            alt="Product image">
+                                        <div class="font-semibold"> {{item.product.name}} </div>
+                                    </div>
+                                </td>
+                                <td class="py-4">ksh: {{ item.total_price }} /=</td>
+                                <td class="py-4">
+                                    <div class="flex items-center">
+                                        <a class="border cursor-pointer rounded-md py-2 px-4 mr-2"
+                                            hx-get=" {% url 'cart:update_cart' item.product.id 'decrement' %} "
+                                            hx-target="#cart-item-{{ item.product.id }}" hx-swap='outerHTML'>
+                                            -
+                                        </a>
+                                        <span class="text-center w-8"> {{ item.quantity }} </span>
+
+                                        <a class="border cursor-pointer rounded-md py-2 px-4 ml-2"
+                                            hx-get=" {% url 'cart:update_cart' item.product.id 'increment' %} "
+                                            hx-target="#cart-item-{{ item.product.id }}" hx-swap='outerHTML'>
+                                            +
+                                        </a>
+                                    </div>
+                                </td>
+                                <td class="py-4">$19.99</td>
+                            </tr>
+                            <!-- More product rows -->
+                        </tbody>
+                    </table>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="md:w-2/5 flex justify-center items-center">
+                <div class="bg-white rounded-lg shadow-md p-6 w-full max-w-[300px]">
+
+                    {% include 'cart/summary.html' %}
+                    <a href=" {% url 'cart:checkout' %} ">
+                        <button class="bg-blue-500 text-white py-2 px-4 rounded-lg mt-4 w-full">Checkout</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+
+
+{% block js %}
+
+{% endblock js %}

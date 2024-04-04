@@ -1,0 +1,98 @@
+<div class="flex flex-col space-y-4">
+    <h1 class="text-2xl mt-6">
+        PAYMENT INFORMATION
+    </h1>
+
+    <div class="mt-8">
+        <input class="border border-gray-300 p-4 rounded w-full text-base leading-4 placeholder-gray-600 text-gray-600"
+            type="email" name="" id="" placeholder="Email" />
+    </div>
+
+    <label class="mt-8 text-base leading-4 text-gray-800 dark:text-gray-50">Card details</label>
+    <div class="mt-2 flex-col">
+        <div>
+            <input
+                class="border rounded-tl rounded-tr border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600"
+                type="email" name="" id="" placeholder="0000 1234 6549 15151" />
+        </div>
+        <div class="flex-row flex">
+            <input
+                class="border rounded-bl border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600"
+                type="email" name="" id="" placeholder="MM/YY" />
+            <input
+                class="border rounded-br border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600"
+                type="email" name="" id="" placeholder="CVC" />
+        </div>
+    </div>
+
+    <label class="mt-8 text-base leading-4 text-gray-800 dark:text-gray-50">Name on card</label>
+    <div class="mt-2 flex-col">
+        <div>
+            <input
+                class="border rounded border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600"
+                type="email" name="" id="" placeholder="Name on card" />
+        </div>
+    </div>
+
+    <label class="mt-8 text-base leading-4 text-gray-800 dark:text-gray-50">Country or region</label>
+    <div class="mt-2 flex-col">
+        <div class="relative">
+            <button id="changetext"
+                class="text-left border rounded-tr rounded-tl border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600 bg-white"
+                type="email" name="" id="">United States</button>
+            <svg onclick="showMenu(true)" id="closeIcon" class="cursor-pointer absolute top-4 right-4" width="16"
+                height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.5 5.75L8 10.25L12.5 5.75" stroke="#27272A" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <svg onclick="showMenu(true)" id="openIcon"
+                class="cursor-pointer hidden transform rotate-180 absolute top-4 right-4" width="16" height="16"
+                viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.5 5.75L8 10.25L12.5 5.75" stroke="#27272A" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <div id="dropdown" class="mt-1 hidden absolute z-10 w-full bg-gray-50 justify-start flex-col text-gray-600">
+                <div onclick="changeText('China')" class="cursor-pointer hover:bg-gray-800 hover:text-white px-4 py-2">
+                    China
+                </div>
+                <div onclick="changeText('Russia')" class="cursor-pointer hover:bg-gray-800 hover:text-white px-4 py-2">
+                    Russia</div>
+                <div onclick="changeText('UK')" class="cursor-pointer hover:bg-gray-800 hover:text-white px-4 py-2">UK
+                </div>
+            </div>
+        </div>
+        <input
+            class="border rounded-bl rounded-br border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600"
+            type="text" name="" id="" placeholder="ZIP" />
+    </div>
+
+    <button
+        class="mt-8 border border-transparent hover:border-gray-300 dark:bg-white dark:hover:bg-gray-900 dark:text-gray-900 dark:hover:text-white dark:border-transparent bg-gray-900 hover:bg-white text-white hover:text-gray-900 flex justify-center items-center py-4 rounded w-full">
+        <div>
+            <p class="text-base leading-4">Pay </p>
+        </div>
+    </button>
+
+    <script>let closeIcon = document.getElementById("closeIcon");
+        let openIcon = document.getElementById("openIcon");
+        let dropdown = document.getElementById("dropdown");
+        let text = document.getElementById("changetext");
+        // more free and premium Tailwind CSS components at https://tailwinduikit.com/
+        const showMenu = (flag) => {
+            if (flag) {
+                closeIcon.classList.toggle("hidden");
+                openIcon.classList.toggle("hidden");
+                dropdown.classList.toggle("hidden");
+            } else {
+                closeIcon.classList.toggle("hidden");
+                openIcon.classList.toggle("hidden");
+                dropdown.classList.toggle("hidden");
+            }
+        };
+
+        const changeText = (country) => {
+            text.innerHTML = country;
+            closeIcon.classList.toggle("hidden");
+            openIcon.classList.toggle("hidden");
+            dropdown.classList.toggle("hidden");
+        };
+    </script>
+</div>

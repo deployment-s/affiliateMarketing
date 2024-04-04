@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+checkout Page
+{% endblock title %}
+
+
+
+{% block css %}
+<link rel="stylesheet" href=" {% static 'css/card.css' %} ">
+{% endblock css %}
+
+{% block content %}
+
+<div class=" w-full py-8">
+    <div class="container mx-auto px-4">
+
+        <!-- form start -->
+        <div class="flex flex-col md:flex-row gap-4 w-full  rounded-xl">
+            <div class=" md:w-3/5 flex flex-col justify-center items-center gap-4">
+                <div class="max-w-[800px] ">
+                    <div> {% include 'cart/shipping_information_partial.html' %}</div>
+
+
+                    <div> {% include 'cart/contact_information_partial.html' %} </div>
+
+                    <div class="mb-4 p-4 text-red-600 font-bold bg-gray-100 rounded-xl hidden" id="errors">
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="md:w-2/5 flex justify-center items-center">
+                <div class="bg-white rounded-lg shadow-md p-6 w-full max-w-[300px]">
+
+                    {% include 'cart/summary_partial.html' %}
+
+                    <button onclick="buy(event)" class="bg-blue-500 text-white py-2 px-4 rounded-lg mt-4 w-full">Confirm
+                        Checkout</button>
+
+
+                </div>
+            </div>
+        </div>
+        <!-- form end -->
+    </div>
+
+</div>
+
+
+{% endblock content %}
+
+
+
+
+{% block js %}
+<!-- <script src="{% static 'js/stripe.js' %}"></script> -->
+<script type="application/javascript" src="https://js.stripe.com/v3/"></script>
+
+<script>
+    let element = document.getElementById('errors');
+    function validateForm(data) {
+        let errors = []
+
+        if (data.first_name === '') {
+            errors.push('First name is empty')
+        }
+
+        if (data.last_name === '') {
+            errors.push('Last name is empty')
+        }
+
+        if (data.email === '') {
+            errors.push('Email is empty')
+        }
+
+        if (data.phone === '') {
+            errors.push('Phone is empty')
+        }
+
+        if (data.address === '') {
+            errors.push('Address is empty')
+        }
+
+        if (data.zipcode === '') {
+            errors.push('Zipcode is empty')
+        }
+
+        if (data.place === '') {
+            errors.push('Place is empty')
+        }
+        if (errors.length > 0) {
+            let html = '<ul>';
+            for (let i = 0; i < errors.length; i++) {
+                html += '<li>' + errors[i] + '</li>';
+            }
+            html += '</ul>';
+            element.innerHTML = html;
+            element.classList.remove('hidden'); // Remove the 'hidden' class to make the div visible
+        }
+
+        return errors
+    }
+
+    function buy(event) {
+        event.preventDefault()
+
+        let data = {
+            'first_name': document.querySelector('input[name=first_name]').value,
+            'last_name': document.querySelector('input[name=last_name]').value,
+            'email': document.querySelector('input[name=email]').value,
+            'phone': document.querySelector('input[name=phone]').value,
+            'address': document.querySelector('input[name=address]').value,
+            'zipcode': document.querySelector('input[name=zipcode]').value,
+            'place': document.querySelector('input[name=place]').value,
+        }
+
+        let errors = validateForm(data)
+
+        if (errors.length) {
+            console.log('Errors', errors)
+        } else {
+            var stripe = Stripe('{{ pub_key }}')
+
+            fetch('/order/start_order/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                credentials: 'same-origin',
+                body: JSON.stringify(data)
+            })
+                .then(function (response) {
+                    return response.json()
+                })
+                .then(function (session) {
+                    return stripe.redirectToCheckout({ sessionId: session.session.id })
+                })
+                .then(function (result) {
+                    if (result.error) {
+                        alert(result.error.message)
+                    }
+                })
+                .catch(function (error) {
+                    console.log('Errors', error)
+                })
+        }
+
+        return false
+    }
+</script>
+{% endblock js %}

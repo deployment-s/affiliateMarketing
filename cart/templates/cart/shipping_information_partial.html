@@ -1,0 +1,40 @@
+<div class="flex flex-col space-y-4">
+    <h1 class="text-2xl">
+        SHIPPING INFORMATION
+    </h1>
+    <div class="flex flex-col md:flex-row gap-2 ">
+        <div class=" w-full md:w-1/2 ">
+            <label for="first_name">First name</label>
+            <input
+                class="border border-gray-300 p-3 rounded w-full text-base leading-4 placeholder-gray-600 text-gray-600"
+                type="text" name="first_name" value="{{request.user.first_name}}" required>
+        </div>
+
+        <div class="w-full md:w-1/2">
+            <label for="last_name">Last name</label>
+            <input
+                class="border border-gray-300 p-3 rounded w-full text-base leading-4 placeholder-gray-600 text-gray-600"
+                type="text" name="last_name" value="{{request.user.last_name}}" required>
+        </div>
+    </div>
+    <div class="mt-8">
+        <label for="address">Address</label>
+        <input class="border border-gray-300 p-3 rounded w-full text-base leading-4 placeholder-gray-600 text-gray-600"
+            type="address" name="address" />
+    </div>
+    <div class="flex flex-col md:flex-row gap-2 ">
+        <div class="w-full md:w-1/2 ">
+            <label for="Zip code">Zip code</label>
+            <input
+                class="border border-gray-300 p-3 rounded w-full text-base leading-4 placeholder-gray-600 text-gray-600"
+                type="text" id="zipcode" name="zipcode" placeholder="zipcode" required>
+        </div>
+
+        <div class="w-full md:w-1/2">
+            <label for="place">City/place</label>
+            <input
+                class="border border-gray-300 p-3 rounded w-full text-base leading-4 placeholder-gray-600 text-gray-600"
+                type="text" id="place" name="place" placeholder="City/place" required>
+        </div>
+    </div>
+</div>

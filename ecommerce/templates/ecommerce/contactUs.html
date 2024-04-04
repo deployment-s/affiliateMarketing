@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load tailwind_filters %}
+
+{% block title %}
+Contact Us
+{% endblock title %}
+
+
+
+{% block css %}
+
+{% endblock css %}
+
+{% block content %}
+
+<section class="">
+    <div id="iframe">
+
+        {% include 'ecommerce/iframe.html' %}
+    </div>
+
+    {% include 'ecommerce/successModal_partial.html' %}
+    <div id="contact-form">
+
+        <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center ">Contact Us</h2>
+            <p class="mb-8 lg:mb-16 font-light text-center sm:text-xl">Got a technical issue? Want to send feedback
+                about a
+                beta feature? Need details about our Business plan? Let us know.</p>
+
+
+            <div id="contact-form-container">
+
+                <form method="post" class="space-y-8">
+                    {% csrf_token %}
+                    <div>
+                        <label for="full_name" class="block mb-2 text-sm font-medium">Your Fullname</label>
+                        <input type="text" name="full_name" id="full_name" placeholder="Full name" required
+                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light">
+                    </div>
+                    <div>
+                        <label for="email" class="block mb-2 text-sm font-medium">Your email</label>
+                        <input type="email" name="email" id="email" placeholder="name@ecommerce.com" required
+                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light">
+                    </div>
+                    <div>
+                        <label for="phone" class="block mb-2 text-sm font-medium">Your phone</label>
+                        <input type="phone" name="phone" id="phone" placeholder="+254 10000000" required
+                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light">
+                    </div>
+                    <div>
+                        <label for="subject" class="block mb-2 text-sm font-medium">Subject</label>
+                        <input type="text" name="subject" id="subject" placeholder="Let us know how we can help you"
+                            required
+                            class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light">
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label for="message" class="block mb-2 text-sm font-medium">Your message</label>
+                        <textarea name="message" id="message" rows="6" placeholder="Leave a comment..."
+                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full flex cursor-pointer">
+                        <div
+                            class="relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold shadow text-indigo-600 transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-gray-50 dark:bg-gray-700 dark:text-white dark:hover:text-gray-200 dark:shadow-none group">
+                            <span
+                                class="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-indigo-600 group-hover:h-full"></span>
+                            <span class="absolute right-0 pr-4 duration-200 ease-out group-hover:translate-x-12">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor"
+                                    fill="none" class="w-5 h-5 text-green-400">
+                                    <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-width="2" stroke-linejoin="round"
+                                        stroke-linecap="round">
+                                    </path>
+                                </svg>
+                            </span>
+                            <span
+                                class="absolute left-0 pl-2.5 -translate-x-12 group-hover:translate-x-0 ease-out duration-200">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor"
+                                    fill="none" class="w-5 h-5 text-green-400">
+                                    <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-width="2" stroke-linejoin="round"
+                                        stroke-linecap="round">
+                                    </path>
+                                </svg>
+                            </span>
+                            <span
+                                class="relative w-full text-left transition-colors duration-200 ease-in-out group-hover:text-white dark:group-hover:text-gray-200">Send
+                                message</span>
+                        </div>
+                    </button>
+
+                    <!-- <button type="submit"
+                        class="py-3 px-5 text-sm font-medium text-center rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Send
+                        message</button> -->
+                </form>
+
+                {% include 'ecommerce/contactPage_partial.html' %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+
+{% block js %}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'js/contactUs.js' %}"></script>
+{% endblock js %}
