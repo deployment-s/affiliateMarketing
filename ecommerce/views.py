@@ -141,7 +141,6 @@ def edit_my_account(request, pk):
 
 
 
-@login_required
 def Shop(request):
     categories = Category.objects.all()
     products = Product.objects.all()

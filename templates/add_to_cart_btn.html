@@ -1,10 +1,5 @@
-<a class="w-full" href="#" hx-get="{% url 'cart:add_to_cart' product.id %}" hx-target="#menu_add_to_cart"
-    hx-swap="outerHTML">
-
-    <div class="w-full">
-
-        <button class="hover:bg-sky-700 text-gray-50 bg-sky-800 py-2 rounded-md w-full p-6">Add
-            to cart
-        </button>
-    </div>
-</a>
+<div class="w-full">
+    <a href="{{product.link}}" target="_blank" rel="noopener noreferrer"> <button
+            class="hover:bg-sky-700 text-gray-50 bg-sky-800 py-2 rounded-md w-full p-6">Buy now
+        </button></a>
+</div>

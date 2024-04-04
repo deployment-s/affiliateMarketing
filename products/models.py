@@ -21,10 +21,11 @@ class Product(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField()
     description = models.TextField(blank=True, null=True)
-    price = models.IntegerField()
+    price = models.IntegerField(blank=True, null=True, default=10000)
     created_at = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='uploads/')
     thumbnail = models.ImageField(upload_to='uploads/', blank=True, null=True)
+    link = models.URLField(blank=True, null=True)
 
     class Meta:
         ordering = ('-created_at',)
@@ -46,6 +47,16 @@ class Product(models.Model):
                 return self.thumbnail.url
             else:
                 return 'https://via.placeholder.com/240x240x.jpg'
+
+    def formatted_description(self):
+        formatted_details = ''
+        if self.description:
+            formatted_details += '<strong>Product details</strong> <br> \n'
+            details = self.description.strip().split('\n')
+            for detail in details:
+                key, value = detail.split(':', 1)
+                formatted_details += f"<strong>{key}:</strong> <span>{value.strip()}</span> <br> \n"
+        return formatted_details
 
     def make_thumbnail(self, image, size=(300, 300)):
         img = Image.open(image)

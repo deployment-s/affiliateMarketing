@@ -8,6 +8,9 @@ Product
 
 
 
+
+
+
 {% block css %}
 
 {% endblock css %}
@@ -21,15 +24,13 @@ Product
 
 
     <div class="w-full md:w-3/5 p-4">
-        <img src=" {{ product.image.url }}" class=" object-contain rounded-xl" alt="product Image">
+        <img src=" {{ product.image.url }}" class=" object-cover object-center rounded-xl" alt="product Image">
     </div>
 
 
     <div class="w-full md:w-2/5 p-4 ">
-        <h1 class="text-2xl"> {{product.name}}</h1>
-        <p>Ksh: {{product.get_display_price}}</p>
-        <p> {{product.description}} </p>
-
+        <h1 class="text-2xl font-bold mb-3"> {{product.name}}</h1>
+        {{ product.formatted_description|safe }}
         {% if product.get_rating > 0 %}
         <p> Rating: {{product.get_rating}}/6 </p>
         {% endif %}

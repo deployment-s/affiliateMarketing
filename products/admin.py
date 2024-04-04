@@ -5,12 +5,12 @@ from . import models
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'category', 'get_display_price', 'get_rating')
+    list_display = ('name', 'category', 'get_rating')
 
-    def get_display_price(self, obj):
-        return obj.price / 100
+    # def get_display_price(self, obj):
+    #     return obj.price / 100
 
-    get_display_price.short_description = 'Price (Divided by 100)'
+    # get_display_price.short_description = 'Price (Divided by 100)'
 
     def get_rating(self, obj):
         return obj.get_rating()
