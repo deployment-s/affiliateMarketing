@@ -1,4 +1,4 @@
-#!D:\coding\django\ecommerce-render-trial2\venv\Scripts\python.exe
+#!D:\coding\django\affiliateMarketing\venv\Scripts\python.exe
 
 import sys
 import json
