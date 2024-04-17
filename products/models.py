@@ -58,17 +58,41 @@ class Product(models.Model):
                 formatted_details += f"<strong>{key}:</strong> <span>{value.strip()}</span> <br> \n"
         return formatted_details
 
-    def make_thumbnail(self, image, size=(300, 300)):
-        img = Image.open(image)
-        img = img.convert('RGB')
-        img.thumbnail(size)
+    # def make_thumbnail(self, image, size=(300, 300)):
+    #     img = Image.open(image)
+    #     img = img.convert('RGB')
+    #     img.thumbnail(size)
 
-        thumb_io = BytesIO()
-        img.save(thumb_io, 'JPEG', quality=85)
+    #     thumb_io = BytesIO()
+    #     img.save(thumb_io, 'JPEG', quality=85)
 
-        thumbnail = File(thumb_io, name=image.name)
+    #     thumbnail = File(thumb_io, name=image.name)
 
-        return thumbnail
+    #     return thumbnail
+
+    def make_thumbnail(self, image, size=(300, 300), format='JPEG', quality=85):
+        try:
+            img = Image.open(image)
+            img = img.convert('RGB')
+
+            # Preserve aspect ratio
+            img.thumbnail(size)
+            width, height = img.size
+            left = (width - size[0]) / 2
+            top = (height - size[1]) / 2
+            right = (width + size[0]) / 2
+            bottom = (height + size[1]) / 2
+            img = img.crop((left, top, right, bottom))
+
+            thumb_io = BytesIO()
+            img.save(thumb_io, format=format, quality=quality)
+
+            thumbnail = File(thumb_io, name=image.name)
+            return thumbnail
+
+        except Exception as e:
+            print(f"Error making thumbnail: {e}")
+            return None
 
     def get_rating(self):
         reviews_total = 0
