@@ -4,8 +4,14 @@ set -e
 # Run Django migrations
 python manage.py migrate --noinput
 
-# Collect static files
-python manage.py collectstatic --noinput
+# Collect static files (continue even if it fails - e.g., S3 misconfiguration)
+echo "Collecting static files..."
+if python manage.py collectstatic --noinput; then
+    echo "Static files collected successfully"
+else
+    echo "Warning: collectstatic failed. The app will still start, but static/CSS files may not load."
+    echo "Check your S3/static storage configuration if CSS is missing."
+fi
 
 # Create superuser if env vars are set and user doesn't exist
 if [ -n "$SUPERUSER_USERNAME" ] && [ -n "$SUPERUSER_PASSWORD" ] && [ -n "$SUPERUSER_EMAIL" ]; then
