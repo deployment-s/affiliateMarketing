@@ -26,4 +26,4 @@ def Product_Page(request,pk,slug):
                 )
 
             return redirect('products:product', pk=pk, slug=slug)
-    return render(request, 'products/product.html', {'products': [product]})
+    return render(request, 'products/product.html', {'product': product})
