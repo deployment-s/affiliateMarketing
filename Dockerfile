@@ -38,8 +38,9 @@ COPY . .
 # Build Tailwind CSS (requires Node.js)
 RUN cd theme/static_src && npm ci && npm run build
 
-# Collect static files (including built Tailwind CSS)
-RUN python manage.py collectstatic --noinput || true
+# Copy entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 # Create non-root user
 RUN useradd --create-home appuser && chown -R appuser:appuser /app
@@ -47,6 +48,9 @@ USER appuser
 
 # Expose the port Render expects
 EXPOSE 10000
+
+# Entrypoint for startup tasks (migrations, collectstatic, superuser)
+ENTRYPOINT ["/entrypoint.sh"]
 
 # Start command (Render overrides this with its own, but we provide a fallback)
 CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:10000"]
