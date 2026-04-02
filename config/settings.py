@@ -2,22 +2,18 @@ import environ
 import os
 import dj_database_url
 
-
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False)
-
 )
-
-# DEBUG = True
 
 # Set the project base directory
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Take environment variables from .env file
-# READ_DOT_ENV_FILE = env.bool('READ_DOT_ENV_FILE', default=False)
-# if READ_DOT_ENV_FILE:
-environ.Env.read_env()
+# Read .env file from BASE_DIR explicitly
+env_path = os.path.join(BASE_DIR, '.env')
+if os.path.exists(env_path):
+    environ.Env.read_env(env_path)
 
 
 
@@ -55,14 +51,11 @@ CART_SESSION_ID = 'cart'
 
 
 
-STRIPE_API_KEY_PUBLISHABLE =env('STRIPE_API_KEY_PUBLISHABLE')
-STRIPE_API_KEY_HIDDEN =env('STRIPE_API_KEY_HIDDEN')
-
-# STRIPE_SUCCESS_URL = '/'
-# STRIPE_CANCEL_URL = '/'
-
-STRIPE_SUCCESS_URL = env('STRIPE_SUCCESS_URL')
-STRIPE_CANCEL_URL = env('STRIPE_CANCEL_URL')
+# Stripe Configuration (optional for production - will be disabled if not set)
+STRIPE_API_KEY_PUBLISHABLE = env('STRIPE_API_KEY_PUBLISHABLE', default='')
+STRIPE_API_KEY_HIDDEN = env('STRIPE_API_KEY_HIDDEN', default='')
+STRIPE_SUCCESS_URL = env('STRIPE_SUCCESS_URL', default='/')
+STRIPE_CANCEL_URL = env('STRIPE_CANCEL_URL', default='/')
 
 
 # Application definition
@@ -217,13 +210,14 @@ JAZZMIN_SETTINGS ={
 
 # settings.py
 
-EMAIL_BACKEND = env('EMAIL_BACKEND')
-EMAIL_HOST = env('EMAIL_HOST')
-EMAIL_PORT = env('EMAIL_PORT')
-EMAIL_HOST_USER = env('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
-EMAIL_USE_TLS = env('EMAIL_USE_TLS')
+# Email Configuration (optional for production - uses dummy backend if not configured)
+EMAIL_BACKEND = env('EMAIL_BACKEND', default='django.core.mail.backends.dummy.EmailBackend')
+EMAIL_HOST = env('EMAIL_HOST', default='')
+EMAIL_PORT = env('EMAIL_PORT', default=25)
+EMAIL_HOST_USER = env('EMAIL_HOST_USER', default='')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', default='')
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default='')
+EMAIL_USE_TLS = env('EMAIL_USE_TLS', default=False)
 
 
 
@@ -231,9 +225,11 @@ EMAIL_USE_TLS = env('EMAIL_USE_TLS')
 AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_REGION_NAME = env('AWS_S3_REGION_NAME')
+AWS_S3_ENDPOINT_URL = env('AWS_S3_ENDPOINT_URL', default=None)
+AWS_S3_CUSTOM_DOMAIN = env('AWS_S3_CUSTOM_DOMAIN', default=None)
+AWS_QUERYSTRING_AUTH = env.bool('AWS_QUERYSTRING_AUTH', default=False)
+AWS_S3_ADDRESSING_STYLE = "path"  # Use path-style addressing for Supabase
+
 DEFAULT_FILE_STORAGE = env('DEFAULT_FILE_STORAGE')
 STATICFILES_STORAGE = env('STATICFILES_STORAGE')
-AWS_S3_REGION_NAME = env('AWS_S3_REGION_NAME')
-# AWS_S3_CUSTOM_DOMAIN = env('AWS_S3_CUSTOM_DOMAIN')
-
-AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com"
