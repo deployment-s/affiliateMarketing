@@ -54,8 +54,15 @@ class Product(models.Model):
             formatted_details += '<strong>Product details</strong> <br> \n'
             details = self.description.strip().split('\n')
             for detail in details:
-                key, value = detail.split(':', 1)
-                formatted_details += f"<strong>{key}:</strong> <span>{value.strip()}</span> <br> \n"
+                detail = detail.strip()
+                if not detail:
+                    continue  # Skip empty lines
+                if ':' in detail:
+                    key, value = detail.split(':', 1)
+                    formatted_details += f"<strong>{key.strip()}:</strong> <span>{value.strip()}</span> <br> \n"
+                else:
+                    # If no colon, treat as plain text
+                    formatted_details += f"<span>{detail}</span> <br> \n"
         return formatted_details
 
     # def make_thumbnail(self, image, size=(300, 300)):
