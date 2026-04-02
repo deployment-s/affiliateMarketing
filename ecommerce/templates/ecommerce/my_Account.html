@@ -55,7 +55,7 @@ My Account
                             <a
                                 href="{% url 'products:product' item.product.pk item.product.slug %}">{{item.product.name}}</a>
 
-                            <p class="mb-6 pt-1 ">Ksh: {{item.get_total_price }} </p>
+                            <p class="mb-6 pt-1 ">${{ item.get_total_price|floatformat:2 }} </p>
 
                         </div>
 
@@ -73,7 +73,7 @@ My Account
 
             <div>
                 <p class="text-lg">Date: {{order.created_at }}</p>
-                <p class="text-lg">Total: Ksh: {{ order.get_total_price }} </p>
+                <p class="text-lg">Total: ${{ order.get_total_price|floatformat:2 }} </p>
 
             </div>
 

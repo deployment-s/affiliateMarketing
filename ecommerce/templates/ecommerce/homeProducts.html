@@ -49,7 +49,7 @@
         <div class="mt-auto pt-3 border-t border-gray-100">
             <div class="flex items-center justify-between mb-3">
                 <span class="text-2xl font-bold text-indigo-600">
-                    Ksh {{ product.get_display_price }}
+                    ${{ product.get_display_price|floatformat:2 }}
                 </span>
                 {% if product.get_rating > 0 %}
                 <div class="flex items-center text-sm text-gray-500">
