@@ -14,7 +14,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libjpeg-dev \
     zlib1g-dev \
     libfreetype6-dev \
+    curl \
     && rm -rf /var/lib/apt/lists/*
+
+# Install Node.js (needed for Tailwind CSS build)
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get install -y --no-install-recommends nodejs && \
+    rm -rf /var/lib/apt/lists/*
 
 # Set work directory
 WORKDIR /app
@@ -29,7 +35,10 @@ RUN pip install --upgrade pip setuptools wheel && \
 # Copy project files
 COPY . .
 
-# Collect static files (will also run in entrypoint if needed)
+# Build Tailwind CSS (requires Node.js)
+RUN cd theme/static_src && npm ci && npm run build
+
+# Collect static files (including built Tailwind CSS)
 RUN python manage.py collectstatic --noinput || true
 
 # Create non-root user
