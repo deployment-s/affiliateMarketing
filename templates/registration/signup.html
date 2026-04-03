@@ -1,60 +1,142 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% load tailwind_filters %}
 
-
-{% block title %}
-Login
-{% endblock title %}
-
-
-
-{% block css %}
-
-{% endblock css %}
-
-
+{% block title %}Create Account - PrimePicksHub{% endblock title %}
 
 {% block content %}
-<section class="">
-    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
-        <a href="/" class="flex items-center gap-3 mb-6 text-2xl font-semibold ">
-            <svg class="h-6 w-6 flex-shrink-0 text-gray-900 group-hover:text-gray-500" fill="none" viewBox="0 0 24 24"
-                stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-            </svg>
-            Ecommerce website
-        </a>
-        <div
-            class="w-full  bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-300 dark:border-gray-300">
-            <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-                <h1 class="text-xl font-bold leading-tight tracking-tight md:text-2xl ">
-                    Sign in to your account
-                </h1>
-                <form class=" space-y-4 md:space-y-6" method="post" action="#">
-                    {%csrf_token%}
-                    {{ form|crispy }}
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-indigo-600 to-purple-600 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Join PrimePicksHub</h1>
+        <p class="text-xl text-indigo-100 max-w-2xl mx-auto">
+            Create your account and start discovering amazing Amazon products with exclusive deals and honest reviews.
+        </p>
+    </div>
+</section>
 
+<!-- Sign Up Form Section -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col items-center justify-center">
+            <div class="w-full max-w-2xl">
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div class="p-8">
+                        <div class="text-center mb-8">
+                            <a href="/" class="inline-flex items-center gap-2 mb-6">
+                                <svg class="h-10 w-10 text-indigo-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/>
+                                </svg>
+                                <span class="text-2xl font-bold text-gray-900">PrimePicksHub</span>
+                            </a>
+                            <h2 class="text-2xl font-bold text-gray-900 mb-2">Create Account</h2>
+                            <p class="text-gray-600">Fill in your details to get started</p>
+                        </div>
 
-                    <div class="flex flex-col items-center justify-between">
-                        <button type="submit"
-                            class="w-full bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign
-                            up</button>
-                        <p class="text-sm font-light ">
-                            Already have an account? <a href="{% url 'login' %}"
-                                class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign in</a>
-                        </p>
-                </form>
+                        <form method="post" class="space-y-6">
+                            {% csrf_token %}
+
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="id_first_name" class="block mb-2 text-sm font-medium text-gray-700">First Name *</label>
+                                    <input type="text" name="first_name" id="id_first_name" required
+                                        class="w-full px-4 py-3 text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
+                                        placeholder="John">
+                                </div>
+                                <div>
+                                    <label for="id_last_name" class="block mb-2 text-sm font-medium text-gray-700">Last Name *</label>
+                                    <input type="text" name="last_name" id="id_last_name" required
+                                        class="w-full px-4 py-3 text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
+                                        placeholder="Doe">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="id_username" class="block mb-2 text-sm font-medium text-gray-700">Username *</label>
+                                <input type="text" name="username" id="id_username" required
+                                    class="w-full px-4 py-3 text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
+                                    placeholder="Choose a username">
+                                <p class="mt-1 text-xs text-gray-500">Letters, numbers, and @/./+/-/_ characters only.</p>
+                            </div>
+
+                            <div>
+                                <label for="id_email" class="block mb-2 text-sm font-medium text-gray-700">Email Address *</label>
+                                <input type="email" name="email" id="id_email" required
+                                    class="w-full px-4 py-3 text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
+                                    placeholder="john@example.com">
+                            </div>
+
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="id_password1" class="block mb-2 text-sm font-medium text-gray-700">Password *</label>
+                                    <input type="password" name="password1" id="id_password1" required
+                                        class="w-full px-4 py-3 text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
+                                        placeholder="Create a strong password">
+                                    <p class="mt-1 text-xs text-gray-500">At least 8 characters, not all numeric.</p>
+                                </div>
+                                <div>
+                                    <label for="id_password2" class="block mb-2 text-sm font-medium text-gray-700">Confirm Password *</label>
+                                    <input type="password" name="password2" id="id_password2" required
+                                        class="w-full px-4 py-3 text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
+                                        placeholder="Re-enter your password">
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <input type="checkbox" name="terms" id="terms" required
+                                    class="w-4 h-4 mt-1 text-indigo-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-500">
+                                <label for="terms" class="ml-3 text-sm text-gray-700">
+                                    I agree to the <a href="{% url 'privacy_Policy' %}" class="text-indigo-600 hover:underline">Privacy Policy</a> and
+                                    <a href="{% url 'privacy_Policy' %}" class="text-indigo-600 hover:underline">Terms of Service</a> *
+                                </label>
+                            </div>
+
+                            <button type="submit"
+                                class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                Create Account
+                            </button>
+                        </form>
+
+                        <div class="mt-6 text-center">
+                            <p class="text-sm text-gray-600">
+                                Already have an account?
+                                <a href="{% url 'login' %}" class="font-medium text-indigo-600 hover:text-indigo-800 transition">
+                                    Sign in here
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Benefits Section -->
+                <div class="mt-8 grid md:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-lg shadow p-6 text-center">
+                        <svg class="w-10 h-10 text-indigo-600 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <h3 class="font-semibold text-gray-900 mb-2">Quick Setup</h3>
+                        <p class="text-sm text-gray-600">Create your account in under 2 minutes</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6 text-center">
+                        <svg class="w-10 h-10 text-indigo-600 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                        <h3 class="font-semibold text-gray-900 mb-2">Secure Data</h3>
+                        <p class="text-sm text-gray-600">Your information is protected with encryption</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6 text-center">
+                        <svg class="w-10 h-10 text-indigo-600 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <h3 class="font-semibold text-gray-900 mb-2">Personalized</h3>
+                        <p class="text-sm text-gray-600">Get recommendations tailored just for you</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 {% endblock content %}
 
-
-
 {% block js %}
-
 {% endblock js %}
