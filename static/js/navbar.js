@@ -39,10 +39,10 @@ window.addEventListener('scroll', () => {
 
     if (currentScroll > 20) {
         navbar.classList.remove('bg-[#bce1ff]');
-        navbar.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-md');
+        navbar.classList.add('bg-white', 'shadow-md');
     } else {
         navbar.classList.add('bg-[#bce1ff]');
-        navbar.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-md');
+        navbar.classList.remove('bg-white', 'shadow-md');
     }
 
     lastScroll = currentScroll;
