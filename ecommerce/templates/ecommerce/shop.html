@@ -1,81 +1,234 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
-{% block title %}
-Shopping Page
-{% endblock title %}
-
-
-
-{% block css %}
-
-{% endblock css %}
+{% block title %}Shop - PrimePicksHub{% endblock title %}
 
 {% block content %}
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-indigo-600 to-purple-600 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-3">Shop All Products</h1>
+        <p class="text-lg text-indigo-100 max-w-2xl mx-auto">
+            Browse our curated collection of top-rated products with exclusive deals.
+        </p>
+        <!-- Breadcrumb -->
+        <nav class="mt-6 inline-flex items-center gap-2 text-sm text-indigo-200">
+            <a href="/" class="hover:text-white transition">Home</a>
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            <span class="text-white">Shop</span>
+        </nav>
+    </div>
+</section>
 
-<div class=" mx-auto flex flex-wrap   ">
-    <div class="filter w-full lg:w-1/6  p-4 pr-0  ">
-        <h1 class=" text-2xl font-header">Sidebar</h1>
-        <div class="flex  w-full">
-            <form class=" w-full max-w-[330px]" method="get" action=".">
-                <label class="mb-2 text-sm font-medium text-gray-900 sr-only" for="default-search">Search</label>
-                <div class="relative">
-                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-                            class="w-4 h-4  ">
-                            <path d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" stroke-width="2"
-                                stroke-linejoin="round" stroke-linecap="round" stroke="currentColor"></path>
+<!-- Main Content Section -->
+<section class="py-8 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Sidebar / Filters Panel -->
+            <aside id="sidebar" class="hidden lg:block lg:w-72 flex-shrink-0">
+                <div class="sticky top-24">
+                    <div class="bg-white rounded-2xl shadow-lg p-6 space-y-6">
+                        <!-- Search -->
+                        <div>
+                            <div class="flex items-center gap-2 mb-3">
+                                <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
+                                <h3 class="font-bold text-gray-900">Search</h3>
+                            </div>
+                            <form method="get" action=".">
+                                {% if active_category %}<input type="hidden" name="category" value="{{ active_category }}">{% endif %}
+                                <div class="relative">
+                                    <input name="query" placeholder="Search products..."
+                                        value="{{ query }}"
+                                        class="w-full pl-10 pr-12 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-gray-700 bg-gray-50 focus:bg-white transition"
+                                        type="search">
+                                    <button class="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-indigo-600 hover:bg-indigo-700 rounded-lg text-white transition">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Categories -->
+                        <div>
+                            <div class="flex items-center gap-2 mb-3">
+                                <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+                                </svg>
+                                <h3 class="font-bold text-gray-900">Categories</h3>
+                            </div>
+
+                            <div class="space-y-1">
+                                <a href="{% url 'ecommerce:shop' %}"
+                                    class="block py-2 px-3 rounded-lg text-sm font-medium transition {% if not active_category %}bg-indigo-50 text-indigo-700{% else %}text-gray-600 hover:bg-gray-50 hover:text-gray-900{% endif %}">
+                                    All Categories
+                                </a>
+                                {% for category in categories %}
+                                <a href="{% url 'ecommerce:shop' %}?category={{ category.slug }}"
+                                    class="block py-2 px-3 rounded-lg text-sm font-medium transition {% if category.slug == active_category %}bg-indigo-50 text-indigo-700{% else %}text-gray-600 hover:bg-gray-50 hover:text-gray-900{% endif %}">
+                                    {{ category.name }}
+                                </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <!-- Clear Filters (if any active) -->
+                        {% if query or active_category %}
+                        <div class="pt-2 border-t border-gray-100">
+                            <a href="{% url 'ecommerce:shop' %}" class="text-sm text-indigo-600 hover:text-indigo-800 font-medium flex items-center gap-1">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                                Clear filters
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Product Grid -->
+            <div class="flex-1 min-w-0">
+                <!-- Top Bar -->
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center gap-3">
+                        <!-- Mobile Filter Toggle -->
+                        <button id="mobile-filter-btn" class="lg:hidden flex items-center gap-2 px-4 py-2 bg-white rounded-xl shadow text-sm font-medium text-gray-700 hover:bg-gray-50 transition">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
+                            </svg>
+                            Filters
+                        </button>
+                        <p class="text-sm text-gray-600">{{ products|length }} product{{ products|length|pluralize }} found</p>
+                    </div>
+
+                    {% if query or active_category %}
+                    <div class="flex items-center gap-2 flex-wrap">
+                        {% if query %}
+                        <span class="inline-flex items-center gap-1 bg-indigo-50 text-indigo-700 text-xs font-medium px-3 py-1 rounded-full">
+                            Search: "{{ query }}"
+                            <a href="{% url 'ecommerce:shop' %}{% if active_category %}?category={{ active_category }}{% endif %}" class="ml-1 text-indigo-500 hover:text-indigo-800">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            </a>
+                        </span>
+                        {% endif %}
+                        {% if active_category %}
+                        <span class="inline-flex items-center gap-1 bg-indigo-50 text-indigo-700 text-xs font-medium px-3 py-1 rounded-full">
+                            Category: {{ active_category }}
+                            <a href="{% url 'ecommerce:shop' %}{% if query %}?query={{ query }}{% endif %}" class="ml-1 text-indigo-500 hover:text-indigo-800">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            </a>
+                        </span>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Mobile Filter Drawer (overlay) -->
+                <div id="mobile-filter-drawer" class="fixed inset-0 z-50 hidden">
+                    <div id="filter-overlay" class="absolute inset-0 bg-black bg-opacity-40"></div>
+                    <div id="filter-drawer-panel" class="absolute left-0 top-0 bottom-0 w-80 max-w-full bg-white shadow-xl overflow-y-auto transform -translate-x-full transition-transform duration-300">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-6">
+                                <h2 class="text-lg font-bold text-gray-900">Filters</h2>
+                                <button id="close-filter" class="p-2 rounded-lg hover:bg-gray-100 transition">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <!-- Mobile Filter Content (mirrors sidebar) -->
+                            <form id="mobile-filter-form" method="get" action=".">
+                                <div class="space-y-6">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Search</label>
+                                        {% if active_category %}<input type="hidden" name="category" value="{{ active_category }}">{% endif %}
+                                        <div class="relative">
+                                            <input name="query" placeholder="Search products..."
+                                                value="{{ query }}"
+                                                class="w-full pl-4 pr-12 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-gray-700 bg-gray-50"
+                                                type="search">
+                                            <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-indigo-600 hover:bg-indigo-700 rounded-lg text-white transition">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Categories</label>
+                                        <div class="space-y-1">
+                                            <a href="{% url 'ecommerce:shop' %}" class="block py-2 px-3 rounded-lg text-sm font-medium transition {% if not active_category %}bg-indigo-50 text-indigo-700{% else %}text-gray-600 hover:bg-gray-50{% endif %}">All Categories</a>
+                                            {% for category in categories %}
+                                            <a href="{% url 'ecommerce:shop' %}?category={{ category.slug }}" class="block py-2 px-3 rounded-lg text-sm font-medium transition {% if category.slug == active_category %}bg-indigo-50 text-indigo-700{% else %}text-gray-600 hover:bg-gray-50{% endif %}">{{ category.name }}</a>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    {% if query or active_category %}
+                                    <a href="{% url 'ecommerce:shop' %}" class="block text-sm text-indigo-600 font-medium">Clear all filters</a>
+                                    {% endif %}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                {% if products %}
+                <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                    {% include 'ecommerce/homeProducts.html' %}
+                </div>
+                {% else %}
+                <!-- Empty State -->
+                <div class="bg-white rounded-2xl shadow-lg p-12 text-center">
+                    <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path>
                         </svg>
                     </div>
-                    <input name="query" placeholder="Search ..."
-                        class="block w-full p-2 py-2 ps-10 text-lg text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 outline-none focus:border-blue-500 dark:bg-gray-400 dark:border-gray-400 dark:placeholder-gray-900 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        id="default-search" type="search" />
-                    <button
-                        class="absolute end-2.5 bottom-1/2 translate-y-1/2 p-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-                            class="w-4 h-4">
-                            <path d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" stroke-width="2"
-                                stroke-linejoin="round" stroke-linecap="round" stroke="currentColor"></path>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">No products found</h3>
+                    <p class="text-gray-600 mb-6 max-w-md mx-auto">
+                        {% if query %}We couldn't find any products matching "{{ query }}".{% else %}There are no products in this category yet.{% endif %}
+                    </p>
+                    <a href="{% url 'ecommerce:shop' %}" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-6 py-3 rounded-xl transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                         </svg>
-                        <span class="sr-only">Search</span>
-                    </button>
+                        Browse all products
+                    </a>
                 </div>
-            </form>
-
-        </div>
-
-        <h1 class=" text-2xl font-header mt-4">Categories</h1>
-
-        <ul class="space-y-2">
-            <li><a href=" {% url 'ecommerce:shop' %} "
-                    class=" {% if not active_category %}text-purple-600 {% else %}text-gray-600 {% endif %} ">All
-                    categories</a></li>
-
-            {% for category in categories %}
-            <li><a href=" {% url 'ecommerce:shop'%}?category={{category.slug}} "
-                    class=" {% if category.slug == active_category %}text-purple-600 {% else %}text-gray-600 {% endif %} ">
-                    {{category.name}} </a></li>
-            {% endfor %}
-
-        </ul>
-
-
-    </div>
-
-    <div class=" w-full lg:w-5/6 px-4 flex justify-center items-center">
-        <div class="flex flex-wrap gap-4 justify-center items-center">
-
-            {% include 'ecommerce/homeProducts.html' %}
+                {% endif %}
+            </div>
         </div>
     </div>
-
-</div>
+</section>
 {% endblock content %}
 
-
-
-
 {% block js %}
+<script>
+// Mobile filter drawer
+const openBtn = document.getElementById('mobile-filter-btn');
+const drawer = document.getElementById('mobile-filter-drawer');
+const closeBtn = document.getElementById('close-filter');
+const overlay = document.getElementById('filter-overlay');
+const panel = document.getElementById('filter-drawer-panel');
 
+function openDrawer() {
+    drawer.classList.remove('hidden');
+    requestAnimationFrame(() => {
+        panel.classList.remove('-translate-x-full');
+    });
+}
+function closeDrawer() {
+    panel.classList.add('-translate-x-full');
+    setTimeout(() => drawer.classList.add('hidden'), 300);
+}
+
+if (openBtn) openBtn.addEventListener('click', openDrawer);
+if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+if (overlay) overlay.addEventListener('click', closeDrawer);
+</script>
 {% endblock js %}
