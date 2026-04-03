@@ -1,150 +1,285 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
-{% block title %}
-Privacy policy
-{% endblock title %}
-
-
-
-{% block css %}
-
-{% endblock css %}
+{% block title %}Privacy Policy - PrimePicksHub{% endblock title %}
 
 {% block content %}
-
-
-<div class="">
-    <div class="container mx-auto px-4 py-8">
-        <h1 class="text-3xl font-bold mb-4">Privacy Policy</h1>
-
-        <p class="mb-4">
-            This privacy policy sets out how our website uses and protects any information that you give us when you use
-            this
-            website.
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-indigo-600 to-purple-600 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Privacy Policy</h1>
+        <p class="text-xl text-indigo-100 max-w-3xl mx-auto">
+            We value your trust and are committed to protecting your personal information. This policy explains how we collect, use, and safeguard your data.
         </p>
-
-        <h2 class="text-2xl font-bold mb-2">Information We Collect</h2>
-
-        <p class="mb-4">
-            We may collect the following information:
-        </p>
-
-        <ul class="list-disc list-inside mb-4">
-            <li>Your name and contact information</li>
-            <li>Demographic information</li>
-            <li>Other information relevant to customer surveys and/or offers</li>
-        </ul>
-
-        <h2 class="text-2xl font-bold mb-2">How We Use the Information</h2>
-
-        <p class="mb-4">
-            We require this information to understand your needs and provide you with a better service, and in
-            particular
-            for
-            the following reasons:
-        </p>
-
-        <ul class="list-disc list-inside mb-4">
-            <li>Internal record keeping</li>
-            <li>Improving our products and services</li>
-            <li>Sending promotional emails about new products, special offers, or other information which we think you
-                may
-                find
-                interesting</li>
-            <li>From time to time, we may also use your information to contact you for market research purposes. We may
-                contact
-                you by email, phone, or mail. We may use the information to customize the website according to your
-                interests.</li>
-        </ul>
-
-        <h2 class="text-2xl font-bold mb-2">Security</h2>
-
-        <p class="mb-4">
-            We are committed to ensuring that your information is secure. In order to prevent unauthorized access or
-            disclosure,
-            we have put in place suitable physical, electronic, and managerial procedures to safeguard and secure the
-            information we collect online.
-        </p>
-
-        <h2 class="text-2xl font-bold mb-2">Cookies</h2>
-
-        <p class="mb-4">
-            A cookie is a small file that asks permission to be placed on your computer's hard drive. Once you agree,
-            the
-            file
-            is added, and the cookie helps analyze web traffic or lets you know when you visit a particular site.
-            Cookies
-            allow
-            web applications to respond to you as an individual. The web application can tailor its operations to your
-            needs,
-            likes, and dislikes by gathering and remembering information about your preferences.
-        </p>
-
-        <p class="mb-4">
-            Overall, cookies help us provide you with a better website by enabling us to monitor which pages you find
-            useful
-            and which you do not. A cookie in no way gives us access to your computer or any information about you,
-            other
-            than
-            the data you choose to share with us.
-        </p>
-
-        <h2 class="text-2xl font-bold mb-2">Links to Other Websites</h2>
-
-        <p class="mb-4">
-            Our website may contain links to other websites of interest. However, once you have used these links to
-            leave
-            our
-            site, you should note that we do not have any control over that other website. Therefore, we cannot be
-            responsible
-            for the protection and privacy of any information which you provide whilst visiting such sites and such
-            sites
-            are
-            not governed by this privacy statement. You should exercise caution and look at the privacy statement
-            applicable
-            to
-            the website in question.
-        </p>
-
-        <h2 class="text-2xl font-bold mb-2">Controlling Your Personal Information</h2>
-
-        <p class="mb-4">
-            You may choose to restrict the collection or use of your personal information in the following ways:
-        </p>
-
-        <ul class="list-disc list-inside mb-4">
-            <li>If you have previously agreed to us using your personal information for direct marketing purposes, you
-                may
-                change your mind at any time by writing to or emailing us at [email protected]</li>
-            <li>We will not sell, distribute, or lease your personal information to third parties unless we have your
-                permission
-                or are required by law to do so. We may use your personal information to send you promotional
-                information
-                about
-                third parties which we think you may find interesting if you tell us that you wish this to happen.</li>
-            <li>You may request details of personal information which we hold about you. If you would like a copy of the
-                information held on you, please write to [Your Company Name, Address, City, State, Zip Code] or email
-                [email protected]</li>
-            <li>If you believe that any information we are holding on you is incorrect or incomplete, please write to or
-                email
-                us as soon as possible at the above address. We will promptly correct any information found to be
-                incorrect.
-            </li>
-        </ul>
-
-        <p class="mb-4">
-            This privacy policy is subject to change without notice.
-        </p>
+        <div class="mt-6 inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-indigo-100 text-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span>Last updated: April 3, 2026</span>
+        </div>
     </div>
-</div>
+</section>
 
+<!-- Content Section -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Sidebar / Table of Contents -->
+            <div class="lg:w-72 flex-shrink-0">
+                <div class="lg:sticky lg:top-24">
+                    <div class="bg-white rounded-2xl shadow-lg p-6">
+                        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">On This Page</h3>
+                        <nav class="space-y-1">
+                            <a href="#information-collection" class="block text-gray-600 hover:text-indigo-600 text-sm py-1 transition">Information We Collect</a>
+                            <a href="#information-use" class="block text-gray-600 hover:text-indigo-600 text-sm py-1 transition">How We Use Information</a>
+                            <a href="#information-sharing" class="block text-gray-600 hover:text-indigo-600 text-sm py-1 transition">Information Sharing</a>
+                            <a href="#security" class="block text-gray-600 hover:text-indigo-600 text-sm py-1 transition">Data Security</a>
+                            <a href="#cookies" class="block text-gray-600 hover:text-indigo-600 text-sm py-1 transition">Cookies & Tracking</a>
+                            <a href="#third-party" class="block text-gray-600 hover:text-indigo-600 text-sm py-1 transition">Third-Party Links</a>
+                            <a href="#your-rights" class="block text-gray-600 hover:text-indigo-600 text-sm py-1 transition">Your Rights</a>
+                            <a href="#children" class="block text-gray-600 hover:text-indigo-600 text-sm py-1 transition">Children's Privacy</a>
+                            <a href="#changes" class="block text-gray-600 hover:text-indigo-600 text-sm py-1 transition">Policy Changes</a>
+                            <a href="#contact" class="block text-gray-600 hover:text-indigo-600 text-sm py-1 transition">Contact Us</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="flex-1 min-w-0">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="p-8 md:p-10 space-y-10 text-gray-700 leading-relaxed">
+
+                        <p class="text-gray-600">
+                            This Privacy Policy explains how PrimePicksHub ("we", "our", or "us") collects, uses, and discloses your personal information when you visit and use our website. By accessing or using our services, you agree to the collection and use of information in accordance with this policy.
+                        </p>
+
+                        <!-- Information We Collect -->
+                        <div id="information-collection">
+                            <div class="flex items-start gap-3 mb-4">
+                                <div class="flex-shrink-0 w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h2 class="text-2xl font-bold text-gray-900">Information We Collect</h2>
+                                </div>
+                            </div>
+                            <p class="mb-4">We collect information to provide better services to our users. The types of information we collect include:</p>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Information You Provide</h3>
+                            <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                                <li>Name, email address, and contact details when you create an account</li>
+                                <li>Billing and shipping address when placing an order</li>
+                                <li>Payment information (processed securely through third-party payment providers)</li>
+                                <li>Communication records when you contact us</li>
+                            </ul>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Information Collected Automatically</h3>
+                            <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                                <li>Browser type and version</li>
+                                <li>Device type and operating system</li>
+                                <li>IP address and approximate location</li>
+                                <li>Pages visited and time spent on our website</li>
+                            </ul>
+                        </div>
+
+                        <!-- How We Use Information -->
+                        <div id="information-use">
+                            <div class="flex items-start gap-3 mb-4">
+                                <div class="flex-shrink-0 w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01m-.01 4h.01"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h2 class="text-2xl font-bold text-gray-900">How We Use the Information</h2>
+                                </div>
+                            </div>
+                            <p class="mb-4">We use the information we collect for the following purposes:</p>
+                            <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                                <li>Processing and fulfilling your orders</li>
+                                <li>Sending order confirmations, shipping updates, and account notifications</li>
+                                <li>Improving our products, services, and website experience</li>
+                                <li>Sending promotional emails about new products and special offers (with your consent)</li>
+                                <li>Responding to your inquiries and providing customer support</li>
+                                <li>Preventing fraud and maintaining the security of our platform</li>
+                                <li>Analyzing usage patterns to optimize site performance</li>
+                            </ul>
+                        </div>
+
+                        <!-- Information Sharing -->
+                        <div id="information-sharing">
+                            <div class="flex items-start gap-3 mb-4">
+                                <div class="flex-shrink-0 w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h2 class="text-2xl font-bold text-gray-900">Information Sharing & Disclosure</h2>
+                                </div>
+                            </div>
+                            <p class="mb-4">We do not sell, distribute, or lease your personal information to third parties. We may share your information in the following circumstances:</p>
+                            <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                                <li>With trusted service providers who assist in operating our website and processing transactions (bound by confidentiality agreements)</li>
+                                <li>When required by law, regulation, or legal process</li>
+                                <li>To protect our rights, property, or safety and that of our users</li>
+                                <li>In connection with a merger, acquisition, or sale of assets</li>
+                            </ul>
+                            <div class="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                                <p class="text-amber-800 text-sm">
+                                    <strong class="font-semibold">Note:</strong> We may use your personal information with your consent to send promotional information about third parties we think may interest you.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Data Security -->
+                        <div id="security">
+                            <div class="flex items-start gap-3 mb-4">
+                                <div class="flex-shrink-0 w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h2 class="text-2xl font-bold text-gray-900">Data Security</h2>
+                                </div>
+                            </div>
+                            <p class="mb-4">We are committed to ensuring that your information is secure. We have implemented a combination of physical, electronic, and managerial procedures to safeguard and secure the information we collect online, including:</p>
+                            <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                                <li>HTTPS encryption for all data transmitted between your browser and our servers</li>
+                                <li>Password hashing and encryption for stored credentials</li>
+                                <li>Regular security audits and vulnerability assessments</li>
+                                <li>Restricted access to personal information for authorized personnel only</li>
+                            </ul>
+                        </div>
+
+                        <!-- Cookies -->
+                        <div id="cookies">
+                            <div class="flex items-start gap-3 mb-4">
+                                <div class="flex-shrink-0 w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h2 class="text-2xl font-bold text-gray-900">Cookies & Tracking Technologies</h2>
+                                </div>
+                            </div>
+                            <p class="mb-4">Cookies are small files that help us provide you with a better experience on our website. We use cookies to:</p>
+                            <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                                <li>Remember items in your shopping cart and your session preferences</li>
+                                <li>Understand which pages you find most useful and improve navigation</li>
+                                <li>Tailor our website based on your browsing patterns and preferences</li>
+                                <li>Analyze website traffic and performance</li>
+                            </ul>
+                            <p class="mb-4">Most web browsers automatically accept cookies, but you can usually modify your browser settings to decline cookies if you prefer. Please note that disabling cookies may affect your experience on our website.</p>
+                        </div>
+
+                        <!-- Third-Party Links -->
+                        <div id="third-party">
+                            <div class="flex items-start gap-3 mb-4">
+                                <div class="flex-shrink-0 w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h2 class="text-2xl font-bold text-gray-900">Links to Third-Party Websites</h2>
+                                </div>
+                            </div>
+                            <p class="mb-4">Our website may contain links to external websites, including affiliate partner sites such as Amazon. Once you leave our site through these links, we are no longer responsible for the privacy practices of those external websites. This privacy policy applies solely to information collected on our website. We encourage you to read the privacy statements of any third-party sites you visit.</p>
+                        </div>
+
+                        <!-- Your Rights -->
+                        <div id="your-rights">
+                            <div class="flex items-start gap-3 mb-4">
+                                <div class="flex-shrink-0 w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h2 class="text-2xl font-bold text-gray-900">Your Rights & Choices</h2>
+                                </div>
+                            </div>
+                            <p class="mb-4">You have the following rights regarding your personal information:</p>
+                            <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                                <li><strong class="text-gray-900">Access:</strong> Request a copy of the personal information we hold about you</li>
+                                <li><strong class="text-gray-900">Correction:</strong> Ask us to correct any inaccurate or incomplete information</li>
+                                <li><strong class="text-gray-900">Deletion:</strong> Request the deletion of your personal information where no legal requirement to retain it exists</li>
+                                <li><strong class="text-gray-900">Opt-out:</strong> Unsubscribe from marketing emails at any time using the link provided in each email</li>
+                                <li><strong class="text-gray-900">Restriction:</strong> Request that we limit how we process your personal information</li>
+                            </ul>
+                            <p class="mb-4">To exercise any of these rights, please contact us using the information provided in the <a href="#contact" class="text-indigo-600 hover:underline">Contact Us</a> section below.</p>
+                        </div>
+
+                        <!-- Children's Privacy -->
+                        <div id="children">
+                            <div class="flex items-start gap-3 mb-4">
+                                <div class="flex-shrink-0 w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h2 class="text-2xl font-bold text-gray-900">Children's Privacy</h2>
+                                </div>
+                            </div>
+                            <p class="mb-4">Our website is not intended for children under the age of 13. We do not knowingly collect personal information from children under 13. If we learn that we have inadvertently collected personal information from a child under 13, we will take steps to delete such information promptly. If you believe we have such information, please contact us.</p>
+                        </div>
+
+                        <!-- Policy Changes -->
+                        <div id="changes">
+                            <div class="flex items-start gap-3 mb-4">
+                                <div class="flex-shrink-0 w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.05m5.78 8.12c-.37-.2-.71-.44-1.02-.72-.31-.27-.57-.57-.78-.89M12 12h.01m5.95 4.12c.21-.32.47-.62.78-.89.31-.28.65-.52 1.02-.72M20 12v4.01m-5.95 3.58V20m0-4.01l-3.53 3.54a.999.999 0 01-.71.29m-7.43 0a.999.999 0 01-.71-.29L8.05 20m0-4.01V12"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h2 class="text-2xl font-bold text-gray-900">Changes to This Policy</h2>
+                                </div>
+                            </div>
+                            <p class="mb-4">We may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal requirements, or other factors. When we make changes, we will update the "Last updated" date at the top of this policy. We encourage you to review this page periodically to stay informed about how we protect your information.</p>
+                        </div>
+
+                        <!-- Contact Us -->
+                        <div id="contact">
+                            <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6 border border-indigo-100">
+                                <div class="flex items-start gap-3 mb-3">
+                                    <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                    <div>
+                                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Contact Us</h2>
+                                        <p class="text-gray-600 mb-4">If you have any questions about this Privacy Policy or how we handle your personal information, please reach out to us:</p>
+                                        <div class="space-y-2 text-sm">
+                                            <p class="text-gray-700"><strong class="text-gray-900">Email:</strong> support@primepickshub.com</p>
+                                            <p class="text-gray-700"><strong class="text-gray-900">Address:</strong> PrimePicksHub, P.O. Box 00100, Nairobi, Kenya</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="bg-gray-50 pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 md:p-12 text-center text-white">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4">Have Questions About Your Privacy?</h2>
+            <p class="text-indigo-100 mb-6 max-w-2xl mx-auto">We're here to help. If you have any concerns about how we handle your data, don't hesitate to contact our privacy team.</p>
+            <a href="{% url 'ecommerce:contactUs' %}" class="inline-block bg-white text-indigo-600 font-semibold px-8 py-3 rounded-lg hover:bg-indigo-50 transition duration-200 shadow-lg">
+                Contact Us
+            </a>
+        </div>
+    </div>
+</section>
 {% endblock content %}
-
-
-
-
-{% block js %}
-
-{% endblock js %}
