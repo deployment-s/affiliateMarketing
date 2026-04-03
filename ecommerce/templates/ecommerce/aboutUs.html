@@ -1,75 +1,151 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
-{% block title %}
-About Us
-{% endblock title %}
-
-
+{% block title %}About Us - PrimePicksHub{% endblock title %}
 
 {% block css %}
-
 {% endblock css %}
 
 {% block content %}
-<div class="sm:flex items-center max-w-screen-xl">
-    <div class="sm:w-1/2 p-10">
-        <div class="image object-center text-center">
-            <img src="https://i.imgur.com/WbQnbas.png">
-        </div>
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">About PrimePicksHub</h1>
+        <p class="text-xl text-indigo-100 max-w-3xl mx-auto">
+            Your trusted guide to discovering the best Amazon products, curated with integrity and expertise.
+        </p>
     </div>
-    <div class="sm:w-1/2 p-5">
-        <div class="text">
-            <span class="text-gray-500 border-b-2 border-indigo-600 uppercase">About us</span>
-            <h2 class="my-4 font-bold text-3xl  sm:text-4xl ">About <span class="text-indigo-600">Our Company</span>
-            </h2>
-            <div class="text-gray-700 flex flex-col gap-6">
-                <p> Welcome to PrimePicksHub, your go-to destination for discovering the best deals and recommendations
-                    on Amazon products!
-                    If you're looking to make informed purchasing decisions and save money on your favorite products,
-                    you've come to the right place.
-                </p>
+</section>
 
-                <p>At PrimePicksHub, our mission is simple: to help you find the perfect products on Amazon that meet
-                    your needs and
-                    budget. Whether you're shopping for electronics, home goods, fashion, or anything in between, we've
-                    got you covered.
-                </p>
-
-                <p>As a new website in the affiliate marketing space, we're committed to providing you with honest,
-                    unbiased reviews and
-                    recommendations. Our team scours the Amazon marketplace to curate a carefully selected collection of
-                    top-rated products
-                    across various categories. We prioritize quality, value, and customer satisfaction to ensure that
-                    every recommendation
-                    we make is one that we truly believe in.
-                </p>
-
-                <p> But PrimePicksHub is more than just a place to find great deals – it's a community of savvy
-                    shoppers like you. Join us
-                    as we share tips, tricks, and insider insights to help you get the most out of your Amazon shopping
-                    experience. Whether
-                    you're a seasoned pro or new to the world of online shopping, you'll find valuable resources and
-                    support here at
-                    PrimePicksHub.
-                </p>
-
-                <p> Thank you for choosing PrimePicksHub as your trusted source for Amazon product recommendations.
-                    We're excited to embark
-                    on this journey with you and help you discover the best that Amazon has to offer.
-                </p>
-
+<!-- Mission Section -->
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-3 gap-8 text-center">
+            <div class="p-6">
+                <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Our Mission</h3>
+                <p class="text-gray-600">To empower shoppers with honest, research-backed recommendations that save time and money while delivering exceptional value.</p>
+            </div>
+            <div class="p-6">
+                <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Our Values</h3>
+                <p class="text-gray-600">Integrity, transparency, and customer-first approach guide every product recommendation we make.</p>
+            </div>
+            <div class="p-6">
+                <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Our Community</h3>
+                <p class="text-gray-600">Join thousands of savvy shoppers who trust PrimePicksHub for honest reviews and exclusive deals.</p>
             </div>
         </div>
     </div>
-</div>
+</section>
 
+<!-- Story Section -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Why We Started PrimePicksHub</h2>
+                <div class="space-y-4 text-gray-700">
+                    <p>
+                        PrimePicksHub was born from a simple observation: shopping on Amazon can be overwhelming. With millions of products and thousands of reviews, finding the right item that balances quality, value, and reliability is a challenge.
+                    </p>
+                    <p>
+                        We built this platform to cut through the noise. Our team dedicates hours to researching, testing, and evaluating products across all categories—from tech gadgets to home essentials—so you don't have to.
+                    </p>
+                    <p>
+                        What sets us apart is our commitment to honesty. We don't let sponsorships or commissions influence our reviews. If a product isn't good enough for our own shopping carts, we won't recommend it to you.
+                    </p>
+                </div>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-semibold mb-4 text-gray-900">What We Offer</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-green-500 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-gray-700"><strong>In-Depth Reviews:</strong> Comprehensive analysis based on features, performance, and real user feedback</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-green-500 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-gray-700"><strong>Price Tracking:</strong> We monitor price changes and highlight the best deals and discounts</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-green-500 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-gray-700"><strong>Category Expertise:</strong> Specialized guides for electronics, home, fashion, and more</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-green-500 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-gray-700"><strong>Transparent Affiliate Links:</strong> We clearly disclose when we earn a commission—no hidden agendas</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-green-500 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-gray-700"><strong>Regular Updates:</strong> Our recommendations are refreshed regularly to reflect current market conditions</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="py-16 bg-indigo-600 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+                <div class="text-4xl font-bold mb-2">10K+</div>
+                <p class="text-indigo-200">Products Reviewed</p>
+            </div>
+            <div>
+                <div class="text-4xl font-bold mb-2">500K+</div>
+                <p class="text-indigo-200">Monthly Visitors</p>
+            </div>
+            <div>
+                <div class="text-4xl font-bold mb-2">15+</div>
+                <p class="text-indigo-200">Categories Covered</p>
+            </div>
+            <div>
+                <div class="text-4xl font-bold mb-2">98%</div>
+                <p class="text-indigo-200">User Satisfaction</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Ready to Shop Smarter?</h2>
+        <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            Explore our curated collections and discover why thousands of shoppers trust PrimePicksHub for their Amazon purchases.
+        </p>
+        <a href="{% url 'shop' %}" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-lg transition duration-300 shadow-lg hover:shadow-xl">
+            Browse Products
+        </a>
+    </div>
+</section>
 {% endblock content %}
 
-
-
-
 {% block js %}
-
 {% endblock js %}
