@@ -22,7 +22,8 @@ from .forms import UpdateUserForm
 
 def Homepage(request):
     products = Product.objects.all()[0:10]
-    return render(request, 'ecommerce/homepage.html', {'products': products})
+    categories = Category.objects.all()
+    return render(request, 'ecommerce/homepage.html', {'products': products, 'categories': categories})
 def AboutUsPage(request):
 
     return render(request, 'ecommerce/aboutUs.html')

@@ -3,7 +3,7 @@
 
 
 {% block title %}
-Home page
+Home
 {% endblock title %}
 
 
@@ -13,38 +13,184 @@ Home page
 {% endblock css %}
 
 {% block content %}
-<div
-    class="min-h-[500px] flex flex-col justify-center items-center bg-gradient-to-r from-indigo-800 via-transparent to-cyan-500 py-4 bg-opacity-5">
 
-    {% if request.user.is_authenticated %}
-    <div class="text-2xl">
-        Hi <span class="text-2xl font-semibold">{{request.user.username }}!</span>
+<!-- ===== HERO SECTION ===== -->
+<section class="relative bg-gradient-to-r from-indigo-800 via-indigo-600 to-cyan-500 overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\\'60\\' height=\\'60\\' viewBox=\\'0 0 60 60\\' xmlns=\\'http://www.w3.org/2000/svg\\'%3E%3Cg fill=\\'none\\' fill-rule=\\'evenodd\\'%3E%3Cg fill=\\'%23ffffff\\' fill-opacity=\\'0.4\\'%3E%3Cpath d=\\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <!-- Text Content -->
+            <div class="text-center md:text-left">
+                {% if request.user.is_authenticated %}
+                <p class="text-indigo-200 text-lg mb-2">Hi {{ request.user.username }}!</p>
+                {% endif %}
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                    Discover Top-Rated Products<br> <span class="text-cyan-300">with Exclusive Deals</span>
+                </h1>
+                <p class="text-indigo-100 text-lg md:text-xl max-w-xl mb-8">
+                    Shop curated collections of premium products with honest reviews and unbeatable prices.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="{% url 'ecommerce:shop' %}" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-indigo-700 font-bold text-lg rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                        Browse All Products
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                    <a href="#categories" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 text-white font-semibold text-lg rounded-xl border-2 border-white/30 hover:bg-white/20 transition-all duration-300">
+                        Shop by Category
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Image -->
+            <div class="hidden md:flex justify-center items-center">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-cyan-400 rounded-full blur-3xl opacity-20"></div>
+                    <img src="{% static 'images/bag.png' %}" alt="PrimePicksHub Shopping" class="relative w-80 h-80 lg:w-96 lg:h-96 object-contain">
+                </div>
+            </div>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="mt-16 grid grid-cols-3 gap-8 max-w-2xl md:max-w-none md:mx-auto">
+            <div class="text-center">
+                <div class="inline-flex items-center justify-center w-12 h-12 bg-white/10 rounded-full mb-3">
+                    <svg class="w-6 h-6 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+                </div>
+                <p class="text-white font-semibold text-sm">Curated Selection</p>
+            </div>
+            <div class="text-center">
+                <div class="inline-flex items-center justify-center w-12 h-12 bg-white/10 rounded-full mb-3">
+                    <svg class="w-6 h-6 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path></svg>
+                </div>
+                <p class="text-white font-semibold text-sm">Unbeatable Prices</p>
+            </div>
+            <div class="text-center">
+                <div class="inline-flex items-center justify-center w-12 h-12 bg-white/10 rounded-full mb-3">
+                    <svg class="w-6 h-6 text-cyan-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>
+                </div>
+                <p class="text-white font-semibold text-sm">Trusted Reviews</p>
+            </div>
+        </div>
     </div>
-    {% endif %}
-    <h2 class="text-PRIMARY1 md:text-4xl text-2xl font-bold">Welcome to PrimePicksHub </h2>
+</section>
 
 
+<!-- ===== FEATURED PRODUCTS ===== -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Featured Products</h2>
+            <p class="text-gray-600 max-w-xl mx-auto">Explore our latest handpicked products with top ratings and exclusive deals.</p>
+        </div>
+
+        {% if products %}
+        <div class="flex flex-wrap justify-center gap-6">
+            {% include 'ecommerce/homeProducts.html' %}
+        </div>
+
+        <div class="text-center mt-12">
+            <a href="{% url 'ecommerce:shop' %}" class="inline-flex items-center gap-2 px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-lg rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+                View All Products
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
+        </div>
+        {% else %}
+        <div class="text-center py-16">
+            <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path></svg>
+            <h3 class="text-xl font-bold text-gray-700 mb-2">No products available yet</h3>
+            <p class="text-gray-500">Check back soon — we're adding great products daily!</p>
+        </div>
+        {% endif %}
+    </div>
+</section>
 
 
+<!-- ===== SHOP BY CATEGORY ===== -->
+{% if categories %}
+<section id="categories" class="py-16 bg-white">
+    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Shop by Category</h2>
+            <p class="text-gray-600 max-w-xl mx-auto">Browse products by your favorite categories.</p>
+        </div>
 
-    <div class="max-w-[500px] w-full bg-no-repeat flex flex-col justify-center items-center">
-        <img src="{% static '/images/bag.png' %}" alt="shopping cart">
-        <a href="{% url 'ecommerce:shop' %}">
-            <button
-                class=" bg-red-400 hover:bg-red-500 text-white font-bold py-3 px-6 rounded-full  hover:text-white shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]  hover:scale-110 hover:brightness-110 animate-bounce hover:animate-none z-0 ">
-                Start Shopping
-            </button>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            {% for category in categories %}
+            <a href="{% url 'ecommerce:shop' %}?category={{ category.slug }}"
+               class="group flex flex-col items-center gap-4 p-6 bg-gray-50 rounded-2xl border border-gray-100 hover:border-indigo-200 hover:bg-indigo-50 hover:shadow-md transition-all duration-300">
+                <div class="w-16 h-16 bg-gradient-to-br from-indigo-100 to-cyan-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path></svg>
+                </div>
+                <div class="text-center">
+                    <span class="font-semibold text-gray-800 group-hover:text-indigo-700 transition-colors">{{ category.name }}</span>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+
+<!-- ===== WHY CHOOSE US ===== -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Why Choose PrimePicksHub</h2>
+            <p class="text-gray-600 max-w-xl mx-auto">We make finding the right product easy, enjoyable, and rewarding.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="text-center p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                <div class="inline-flex items-center justify-center w-14 h-14 bg-indigo-100 text-indigo-600 rounded-xl mb-4">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Curated Selection</h3>
+                <p class="text-gray-600 text-sm">Handpicked quality from trusted brands. Only the best makes it to our shelves.</p>
+            </div>
+
+            <div class="text-center p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                <div class="inline-flex items-center justify-center w-14 h-14 bg-cyan-100 text-cyan-600 rounded-xl mb-4">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 12V8m-4 8V16"></path></svg>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Unbeatable Prices</h3>
+                <p class="text-gray-600 text-sm">Exclusive deals and competitive pricing to get the most value for your money.</p>
+            </div>
+
+            <div class="text-center p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                <div class="inline-flex items-center justify-center w-14 h-14 bg-amber-100 text-amber-600 rounded-xl mb-4">
+                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Trusted Reviews</h3>
+                <p class="text-gray-600 text-sm">Real ratings from real buyers. Make confident decisions with community feedback.</p>
+            </div>
+
+            <div class="text-center p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                <div class="inline-flex items-center justify-center w-14 h-14 bg-purple-100 text-purple-600 rounded-xl mb-4">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Easy Shopping</h3>
+                <p class="text-gray-600 text-sm">Clean interface, smooth navigation, and a seamless checkout experience.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== FINAL CTA SECTION ===== -->
+<section class="py-16 bg-gradient-to-r from-indigo-700 via-indigo-600 to-cyan-500">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Find Your Next Favorite?</h2>
+        <p class="text-indigo-100 text-lg mb-8 max-w-xl mx-auto">Join our community of smart shoppers and start discovering amazing products today.</p>
+        <a href="{% url 'ecommerce:shop' %}" class="inline-flex items-center gap-2 px-8 py-4 bg-white text-indigo-700 font-bold text-lg rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+            Start Shopping Now
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
         </a>
-
     </div>
+</section>
 
-
-</div>
-
-
-<div class="flex flex-wrap justify-center items-center pt-5 px-4 gap-4">
-    {% include 'ecommerce/homeProducts.html' %}
-</div>
 {% endblock content %}
 
 
